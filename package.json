@@ -1,14 +1,15 @@
 {
-  "name": "module-13-challenge-orm",
+  "name": "redux-store",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "watch": "nodemon server.js",
-    "seed": "node seeds/index.js",
-    "db": "mysql -u root -p"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "cd server && npm start",
+    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "heroku-postbuild": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,9 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
     "dotenv": "^8.2.0",
+    "env": "0.0.2",
     "express": "^4.17.1",
+    "graphql": "^15.5.0",
     "mysql2": "^2.1.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
