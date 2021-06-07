@@ -1,4 +1,4 @@
-# Mern Shop Redux
+# Redux-Store
 
 <div style="position: absolute; top: 22px; right: 50px">
 
